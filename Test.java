@@ -15,6 +15,13 @@ public class Test {
             new Student(10, "Shubham", "Pandey", 26, "Male", "Instrumentation Engineering", 2017, "Mumbai", 98));
 
     public static void main(String[] args) {
+
+        Optional<Student> oldestStudent = list.stream()
+                .max((s1, s2) -> Integer.compare(s1.getAge(), s2.getAge()));
+
+        oldestStudent.ifPresent(student ->
+                System.out.println("The oldest student is: " + student)
+        );
         List<Student> lstStuName = list.stream().filter(dt -> dt.getFirstName().startsWith("A"))
                 .collect(Collectors.toList());
 
